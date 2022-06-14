@@ -1,0 +1,17 @@
+[{
+  "_id": {
+    "$oid": "628c2f3e7ed6f4488958b32e"
+  },
+  "sabor": "Açaí com Leite Condensado ",
+  "descricao": "Quam vulputate dignissim suspendisse in est ante in nibh mauris.",
+  "foto": "assets/images/acai-com-leite-condensado.PNG",
+  "preco": 10
+},{
+  "_id": {
+    "$oid": "6291643884f0265e2d3c3f45"
+  },
+  "sabor": "Chocolate Belga ",
+  "descricao": "fewafesa",
+  "foto": "chocolatebelga.png",
+  "preco": 11
+}]

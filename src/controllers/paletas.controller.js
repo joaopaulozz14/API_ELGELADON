@@ -3,23 +3,23 @@ import PaletasService from "../service/paletas.service";
 const paletasService = new PaletasService();
 
 class PaletasController {
-  ListarTodas(req, res) {
+  async ListarTodas(req, res) {
     try {
-      const paletas = paletasService.ListarTodas();
+      const paletas = await paletasService.ListarTodas();
       res.send(paletas);
     } catch (error) {
       res.status(error.status).send(error.message);
     }
   }
-  ListarUmaPaletaPorId(req, res) {
-    const idParam = +req.params.id;
-    const paleta = paletasService.ListarUmaPaletaPorId(idParam);
+  async ListarUmaPaletaPorId(req, res) {
+    const idParam = req.params.id;
+    const paleta = await paletasService.ListarUmaPaletaPorId(idParam);
     res.send(paleta);
   }
-  CriarNovaPaleta(req, res) {
+  async CriarNovaPaleta(req, res) {
     const { sabor, descricao, foto, preco } = req.body;
 
-    const newPaleta = paletasService.CriarNovaPaleta({
+    const newPaleta = await paletasService.CriarNovaPaleta({
       sabor,
       descricao,
       preco,
@@ -42,23 +42,23 @@ class PaletasController {
        const newPaleta = paletasService.CriarNovaPaleta(paleta);
        res.status(201).send(newPaleta);
     }*/
-  AtualizarPaleta(req, res) {
+  async AtualizarPaleta(req, res) {
     const { sabor, descricao, foto, preco } = req.body;
-    const id = +req.params.id;
+    const id = req.params.id;
 
-    const updatedPaleta = paletasService.AtualizarPaleta({
+    const updatedPaleta = await paletasService.AtualizarPaleta({
       sabor,
       descricao,
       foto,
       preco,
       id,
     });
-    res.send(updatedPaleta);
+    res.status(200).send(updatedPaleta);
   }
   ExcluirPaleta(req, res) {
-    const id = +req.params.id;
-    paletasService.ExcluirPaleta({ id });
-    res.sendStatus(204);
+    const id = req.params.id;
+    const paleta = paletasService.ExcluirPaleta({ id });
+    res.status(200).send(paleta);
   }
 }
 /*export const updatePaleta = (req, res) => {
